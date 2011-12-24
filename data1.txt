@@ -1,0 +1,173 @@
+Aditya Subbarao [PD]
+22303	ECON 1	01 LEC	4	Letter Grade	M-W--	1200 -0100 PM	0150 WHEELER AUD	Enrolled
+22327	ECON 1	1O8 DIS	 	 	M-W--	0900 -1000 AM	0105 LATIMER	   
+51827	L & S 5	01 LEC	2	Letter Grade	M----	0400 -0530 PM	F0295 HAAS	Enrolled  
+51917	L & S 40C	01 LEC	3	Letter Grade	-T-T-	0330 -0500 PM	0155 DONNER LAB	Enrolled  
+51926	L & S 40C	1O3 DIS	 	 	---T-	1000 -1100 AM	0234 DWINELLE	   
+51974	L & S C70U	01 LEC	4	Letter Grade	M-W-F	0300 -0400 PM	0150 WHEELER	Enrolled  
+51980	L & S C70U	1O2 DIS	 	 	---T-	0900 -1000 AM	0264 EVANS	   
+71447	POL SCI 5	01 LEC	4	Letter Grade	-T-T-	1230 -0200 PM	2050 VALLEY LSB	Enrolled  
+71459	POL SCI 5	1O4 DIS	 	 	-T---	1000 -1200 PM	0101 WHEELER	   
+
+Allen Yu [CS]
+05253	ASAMST R2A	 01 LEC	4	 Letter Grade	-T-T-	 1100 -1230 PM	0151 BARROWS	 Enrolled 
+05259	 ASAMST R2A	1O2 DIS	  	 	 --W--	1100 -1200 PM	 0140 BARROWS	  
+20747	CHINESE 1O1	 02 LEC	4	 Letter Grade	M-W-F	 1000 -1100 AM	0250 DWINELLE	 Enrolled 
+64626	 NUSCTX 1O3	01 LEC	 3	Letter Grade	 -T-T-	0330 -0500 PM	 2060 VALLEY LSB	Enrolled 
+64830	NUSCTX 199	 22 IND  	3	 P/NP	M-W-F 0100 -0500 PM 	0344 MORGAN 	 Enrolled
+69321	 PHYSICS 8B	02 LEC	 4	Letter Grade	 -T-T-	1230 -0200 PM	 0001 PIMENTEL	Enrolled Undergraduates: Early Drop Deadline (end of 2nd week) applies.
+69336	 PHYSICS 8B	2O3 DIS	  	 	 ----F	0800 -1000 AM	 0201 LECONTE	  
+69339	PHYSICS 8B	 2O3 LAB	 	  	--W--	 0800 -1000 AM	0201 LECONTE	     
+
+Alton Zheng [MK]
+26278	COMPSCI 61A	01 LEC	4	Letter Grade	M-W-F	0200 -0300 PM	0001 PIMENTEL	Enrolled
+26305	COMPSCI 61A	15 LAB	 	 	---T-	1100 -1230 PM	0271 SODA	   
+26308	COMPSCI 61A	115 DIS	 	 	-T---	1100 -1230 PM	0075 EVANS	   
+53996	MATH 53	01 LEC	4	Letter Grade	M-W-F	0100 -0200 PM	0155 DWINELLE	Enrolled  
+55346	MATH 53	117 DIS	 	 	-T-T-	0330 -0500 PM	0039 EVANS	  (This class has had a time change).  
+64596	NUSCTX 24	01 Sem	1	P/NP	--W--	1100 -0100 PM	L0040 UNIT II CNTL	Enrolled  
+75345	PSYCH 2	03 LEC	3	Letter Grade	-T-T-	0200 -0330 PM	0120 LATIMER	Enrolled  
+
+Amanda Chin [EX]
+20630    CHINESE 1X      02 LEC  4       Letter Grade    MT-TF   0900 -1000 AM   0205DWINELLE         Enrolled
+38303    GPP 115         01 LEC  4       Letter Grade    -T-T-   0200 -0330 PM   0150 WHEELER AUD      Enrolled  
+57763    MCELLBI 55      01 LEC  3       Letter Grade    M-W-F   0900 -1000 AM   0159 MULFORD  Enrolled (This class has a time conflict with another classon your schedule.)  
+60365    MUSIC 20A       05 LEC  2       Letter Grade    -T-T-   1100 -1230 PM   0117 MORRISON         Enrolled Wait-Listed ClassesCCN     Course  Section Position        Process Days    Time    Location        Status 
+37278    GERMAN R5A      07 LEC  1       MANUAL  M-W-F   1000 -1100 AM   0259 DWINELLE         Pending  
+57766    MCELLBI C62     01 LEC  26      MANUAL  -T-T-   0330 -0500 PM   0150 WHEELER  Pending (This class has a time conflict with another class onyour schedule.)  
+57790    MCELLBI C62     1O8 DIS                         --W--   0900 -1000 AM   2038 VALLEY LSB        (This class has a time conflict with another class on yourschedule.)  
+
+Amy Huang [MK]
+01236   ENVECON C1O2    01 LEC  4       Letter Grade    -T-T-   0800 -0930 AM        0277 CORY       Enrolled
+01245   ENVECON C1O2    1O3 DIS                         --W--   0400 -0500 PM   0087 DWINELLE  
+36272   GEOG C110       01 LEC  4       Letter Grade    -T-T-   0200 -0330 PM   0141 MCCONE  Enrolled 
+36287   GEOG 130        01 LEC  4       Letter Grade    -T-T-   1230 -0200 PM   0010 EVANS   Enrolled 
+36289   GEOG 130        1O1 DIS                         M----   0100 -0200 PM   0135 MCCONE  
+86160   SPANISH 4       04 Rec  5       Letter Grade    MTWTF   1100 -1200 PM   0103 WHEELER         Enrolled 
+
+Ancy Dow [MK]
+77121 PUB POL 15601 Sem 4 Letter Grade -T-T- 0330 -0500 PM 0105 GSPP
+77153 PUB POL 19003 LEC 3 Letter Grade -T-T- 1230 -0200 PM 0105 GSPP  
+87435 STAT 2101 LEC 4 Letter Grade M-W-F 1200 -0100 PM 0155 DWINELLE  
+87438 STAT 211O1 LAB  M-W-- 0900 -1000 AM 0055 EVANS  
+01221 ENVECON 10001 LEC 2 MANUAL -T-T- 1100 -1230 PM 0106 STANLEY  
+01233 ENVECON 1001O4 DIS  ----F0100 -0200 PM0247 DWINELLE  
+
+Anhang Zhu [EX]
+08443	 UGBA 175	 01 LEC	 3	 Letter Grade	 -T-T-	 1230 -0200 PM	 C0125 CHEIT	 Enrolled 
+25425	 EL ENG 122	 01 LEC	 4	 Letter Grade	 M-W--	 0530 -0700 PM	 0004 LECONTE	 Enrolled      
+25207	 EL ENG 122	 1O7 DIS	  	  	 --W--	 0300 -0400 PM	 0521 CORY	        
+26545	 COMPSCI 169	 01 LEC	 4	 Letter Grade	 M-W--	 0100 -0230 PM	 0306 SODA	 Enrolled      
+26551	 COMPSCI 169	 1O2 DIS	  	  	 -T---	 0400 -0500 PM	 0006 EVANS	        
+27750	 ENGIN 98	         01 GRP	 1	 P/NP	 -T---	 0500 -0600 PM	 0210 BECHTEL AUD	 Enrolled      
+
+Aparna Varma [PB]
+25203	 EL ENG 20N	 01 LEC	 4	 Letter Grade	 -T-T-	 1230 -0200 PM	 0100 LEWIS	 Enrolled
+25206	 EL ENG 20N	 11 LAB	  	  	 M----	 0800 -1100 AM	 0105 CORY	    
+25242	 EL ENG 20N	 1O4 DIS	  	  	 --W--	 0200 -0300 PM	 0241 CORY	    
+32926	 GWS 50AC	 01 LEC	 3	 Letter Grade	 -T-T-	 1100 -1230 PM	 0050 BIRGE	 Enrolled (The exam group for this class conflicts with the exam group for another class on your schedule.)  
+54044	 MATH 53	 02 LEC	 4	 Letter Grade	 -T-T-	 0330 -0500 PM	 0155 DWINELLE	 Enrolled  
+54071	 MATH 53	 2O9 DIS	  	  	 M-W-F	 1200 -0100 PM	 0055 EVANS	    
+68856	 PHYSICS 7B	 01 LEC	 4	 Letter Grade	 M-W-F	 1100 -1200 PM	 0001 LECONTE	 Enrolled Undergraduates: Early Drop Deadline (end of 2nd week) applies. 
+68877	 PHYSICS 7B	 1O4 DIS	  	  	 M----	 0400 -0600 PM	 0225 LECONTE	    
+68880	 PHYSICS 7B	 1O4 LAB	  	  	 --W--	 0400 -0600 PM	 0248 LECONTE	    
+
+Ashley Yu [IN]
+29200	ESPM 162	 01 LEC	4	 Letter Grade	-T-T-	 0200 -0330 PM	0159 MULFORD	 Enrolled 
+29209	 ESPM 162	1O3 DIS	  	 	 --W--	1000 -1100 AM	 0237 CORY	   
+66727	PACS 100	 01 LEC	3	 Letter Grade	-T-T-	 1100 -1230 PM	0166 BARROWS	 Enrolled  
+86166	 SPANISH 4	06 REC	 5	Letter Grade	 MTWTF	0100 -0200 PM	 B0004 DWINELLE	Enrolled Undergraduates: Early Drop Deadline (end of 2nd week) applies.Wait-Listed ClassesCCN	Course	Section	Position	Process	Days	Time	Location	Status 
+66739	 PACS 126	01 LEC	 14	MANUAL	 -T-T-	0330 -0500 PM	 0101 MORGAN	Pending  
+
+Barbara Chu [PD]
+43021	INTEGBI 35AC	 01 LEC	3	 Letter Grade	-T-T-	 0200 -0330 PM	0105 STANLEY	 Enrolled
+57703	 MCELLBI 32	01 LEC	 3	Letter Grade	 -T-T-	0930 -1100 AM	 2050 VALLEY LSB	Enrolled  
+57733	MCELLBI 32	 110 DIS	 	  	--W--	 0300 -0400 PM	0209 DWINELLE	    
+78772	 SCANDIN 1O6	01 LEC	 4	Letter Grade	 -T-T-	1230 -0200 PM	 0160 DWINELLE	Enrolled  
+87492	STAT 21	 02 LEC	4	 Letter Grade	M-W-F	 0100 -0200 PM	0277 CORY	 Enrolled  
+87495	 STAT 21	2O1 LAB	  	 	 M-W--	0200 -0300 PM	 0085 EVANS	   
+
+Becky Wu [PB]
+01236	 ENVECON C1O2	 01 LEC	 4	 Letter Grade	 -T-T-	 0800 -0930 AM	 0277 CORY	 Enrolled 
+01248	 ENVECON C1O2	 1O4 DIS	  	  	 ----F	 0300 -0400 PM	 2032 VALLEY LSB	    
+08194	 UGBA 1O2A	 01 LEC	 3	 Letter Grade	 M-W--	 0930 -1100 AM	 C0230 CHEIT	 Enrolled  
+08200	 UGBA 1O2A	 1O2 DIS	  	  	 ----F	 0900 -1000 AM	 0160 DWINELLE	   Wait-Listed ClassesCCN	Course	Section	Position	Process	Days	Time	Location	Status 
+20735	 CHINESE 100XA	 04 LEC	 14	 MANUAL	 MT-TF	 1100 -1200 PM	 2070 VALLEY LSB	 Pending  
+20780	 CHINESE 188	 01 LEC	 27	 MANUAL	 -T-T-	 0200 -0330 PM	 0229 DWINELLE	 Pending  
+75692	 PB HLTH 140	 01 LEC	 2	 AUTO	 M-W-F	 1000 -1100 AM	 0107 GPB	 Pending (This class has a time conflict with another class on your schedule.)  
+
+Blake Owens [CS]
+08104 UGBA 96 01 LEC 2 Letter Grade M---- 0400 -0530 PM F0295 HAAS Enrolled 
+22303 ECON 1 01 LEC 4 Letter Grade M-W-- 1200 -0100 PM 0150 WHEELER AUD Enrolled 
+22327 ECON 1 1O8 DIS     M-W-- 0900 -1000 AM 0105 LATIMER  
+71447 POL SCI 5 01 LEC 4 Letter Grade -T-T- 1230 -0200 PM 2050 VALLEY LSB Enrolled 
+71474 POL SCI 5 1O9 DIS     --W-- 0200 -0400 PM 0205 DWINELLE  
+80736 SOC WEL 98 01 GRP 2 P/NP ----F 0100 -0400 PM 0135 REC SPRT FAC Enrolled  
+86142 SPANISH 3 04 REC 5 Letter Grade MTWTF 1100 -1200 PM 0206 WHEELER Enrolled  
+
+Bonnie Xiao [FR]
+20642     CHINESE 1Y     02 LEC     5     Letter Grade     MTWTF     0900 -1000 AM     2070 VALLEY LSB     Enrolled
+20654     CHINESE 1Y     1O1 Tut                                      
+22303     ECON 1     01 LEC     4     Letter Grade     M-W--     1200 -0100 PM     0150 WHEELER AUD     Enrolled  
+22321     ECON 1     1O6 DIS                 M-W--     0200 -0300 PM     0105 LATIMER        
+28960     ESPM 50AC     01 LEC     4     Letter Grade     M-W-F     1100 -1200 PM     0100 LEWIS     Enrolled  
+28990     ESPM 50AC     110 DIS                 ---T-     1000 -1100 AM     2032 VALLEY LSB       Wait-Listed ClassesCCN    Course    Section    Position    Process    Days    Time    Location    Status 
+81780     SOCIOL 110     01 LEC     28     MANUAL     M-W-F     0200 -0300 PM     0004 LECONTE     Pending (This class has a time conflict with another class on your schedule.)     
+
+Brandea Bunnag [SO]
+11170 RC 1B 906 LEC 4 Letter Grade -T-T- 0330 -0500 PM 0000 DWINELLE Enrolled
+10320 MATH 1A 902 LEC 4 Letter Grade -T-T- 0800 -0930 AM 0000 KARPE Enrolled     
+10310 MATH 1A 921 DIS 0 Non-Graded -T-T- 0930 -1030 AM 0000 ABS Enrolled     
+10630 MUSIC 27 901 LEC 4 Letter Grade -T-T- 1230 -0200 PM 0000 ABS   Enrolled     
+10650 MUSIC 27 911 DIS 0 Non-Graded -T--- 0200 -0300 PM 0000 ABS Enrolled     
+10890 SOC 3AC 901 LEC 4 Letter Grade M-W-F 1100 -1200 PM 0000 KARPE Enrolled 
+00000 WORK 00 101  LEC 4 Letter Grade M-W-F 0100 -0300 PM 0000 WORK Enrolled   
+
+Brian Lu [IN]
+10375    CHM ENG 160     01 LEC  4       Letter Grade    -T-T-   0800 -0930 AM0182 DWINELLE    Enrolled
+10378    CHM ENG 160     1O1 DIS                         -T---   0100 -0400 PM   0175 TAN  
+10384    CHM ENG 162     01 LEC  4       Letter Grade    -T-T-   0930 -1100 AM 0210 WHEELER     Enrolled 
+10387    CHM ENG 162     1O1 LAB                         -T---   0100 -0200 PM   0212 WHEELER  (This class has a time conflict with another class on yourschedule.) 
+10393    CHM ENG 170A    01 LEC  3       Letter Grade    M-W-F   1000 -1100 AM 0150 GSPP        Enrolled (This class has had a time change).(The exam group for this class conflicts with the exam group foranother class on your schedule.) 
+10399    CHM ENG 170A    1O2 DIS                         ---T-   1100 -1200 PM   0105 LATIMER  
+29167    ESPM 160AC      01 LEC  4       Letter Grade    M-W-F   1000 -1100 AM   0101 BARKER   Enrolled (This class has a time conflict with another class onyour schedule.)(The exam group for this class conflicts with the exam group foranother class on your schedule.) 
+29179    ESPM 160AC      1O4 DIS                         ---T-   1230 -0200 PM   3401 DWINELLE  
+
+Brian Wong [EX]
+25293	 EL ENG 42	 01 LEC	 3	 Letter Grade	 --W-F	 0400 -0530 PM	 0010 EVANS	 Enrolled (The exam group for this class conflicts with the exam group for another class on your schedule.) 
+25299	 EL ENG 42	 1O2 DIS	  	  	 M----	 0300 -0400 PM	 0241 CORY	     
+41066	 IND ENG 191	 01 LEC	 3	 Letter Grade	 -T-T-	 1100 -1230 PM	 0150 GSPP	 Enrolled   
+60653	 MUSIC 158	 01 LEC	 4	 Letter Grade	 M-W--	 0930 -1100 AM	 0212 WHEELER	 Enrolled (The exam group for this class conflicts with the exam group for another class on your schedule.)   
+60656	 MUSIC 158	 1O1 LAB	  	  	 M-W--	 1100 -1230 PM	 0212 WHEELER	   Wait-Listed ClassesCCN	Course	Section	Position	Process	Days	Time	Location	Status    (This class has a time conflict with another class on your schedule.)  
+41063	 IND ENG 190E	 01 Sem	 3	 MANUAL	 -T---	 0400 -0600 PM	 3107 ETCHEVERRY	 Pending   
+
+Calvin Liang [IN]
+26533    COMPSCI 164     01 LEC  4       Letter Grade    M-W--   0530 -0700 PM   0306SODA     Enrolled
+26542    COMPSCI 164     1O3 DIS                         ---T-   0300 -0400 PM   0006 EVANS  
+27292    COMPSCI 198     24GRP 2        P/NP    ---T-   0600 -0800 PM   0310 SODA       Enrolled 
+27792    ENGIN 120       01 LEC  3       Letter Grade    M-W--   1000 -1100 AM   0050 BIRGE    Enrolled 
+27795    ENGIN 120       1O1 DIS                         ----F   1000 -1100 AM   0180 TAN  
+74238    PSYCH 133       01 LEC  3                                       Instr Drop  
+81780    SOCIOL 110      01 LEC  4       Letter Grade    M-W-F   0200 -0300 PM   0004  
+
+Carrie Chow [CS]
+25203	EL ENG 20N	 01 LEC	4	 Letter Grade	-T-T-	 1230 -0200 PM	0100 LEWIS	 Enrolled 
+25227	 EL ENG 20N	18 LAB	  	 	 ----F	0900 -1200 PM	 0105 CORY	   
+25248	EL ENG 20N	 1O6 DIS	 	  	--W--	 0400 -0500 PM	0310 HEARST MIN	    
+26398	 COMPSCI 61C	01 LEC	 4	Letter Grade	 M-W-F	0200 -0300 PM	 0105 STANLEY	Enrolled  
+26407	COMPSCI 61C	 12 LAB	 	  	--W--	 0600 -0800 PM	0200 SUTARDJA DAI	    
+26410	 COMPSCI 61C	112 DIS	  	 	 M----	0600 -0700 PM	 0003 EVANS	   
+53996	MATH 53	 01 LEC	4	 Letter Grade	M-W-F	 0100 -0200 PM	0155 DWINELLE	 Enrolled  
+54035	 MATH 53	113 DIS	  	 	 -T-T-	0200 -0330 PM	 0005 EVANS	   
+60380	MUSIC 26AC	 01 LEC	4	 Letter Grade	-T-T-	 1100 -1230 PM	0320 HERTZ	 Enrolled  
+60395	 MUSIC 26AC	1O5 DIS	  	 	 M----	0300 -0400 PM	 0128 MORRISON	   
+
+Cathy Xu [EX]
+27286	COMPSCI 98	25GRP 2	P/NP	M----	0600 -0800 PM	0501 WURSTER	Enrolled
+39045	HISTORY 5	01 LEC	4	Letter Grade	-T-T-	1100 -1230 PM	0145 DWINELLE	Enrolled  
+39078	HISTORY 5	111 DIS	 	 	----F	1000 -1200 PM	0210 DWINELLE	   
+53900	MATH 16B	01 LEC	3	Letter Grade	-T-T-	0200 -0330 PM	0155 DWINELLE	Enrolled  
+53912	MATH 16B	1O4 DIS	 	 	-T---	0930 -1100 AM	0396 LECONTE	  (This class has had a time change).  
+87435	STAT 21	01 LEC	4	Letter Grade	M-W-F	1200 -0100 PM	0155 DWINELLE	Enrolled  
+87453	STAT 21	1O6 LAB	 	 	M-W--	1100 -1200 PM	0061 EVANS	  Wait-Listed ClassesCCN	Course	Section	Position	Process	Days	Time	Location	Status 
+20738	CHINESE 100XA	05 LEC	26	MANUAL	MT-TF	0100 -0200 PM	0228 DWINELLE	Pending  
