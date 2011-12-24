@@ -77,7 +77,7 @@ public class Time {
 				if (time < 1000) {
 					return -1;
 				}
-				return 9;
+				return 15;
 		}
 	}
 	

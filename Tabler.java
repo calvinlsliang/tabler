@@ -16,9 +16,22 @@ public class Tabler {
 	Schedule schedule = new Schedule(NUM_WEEKDAYS, NUM_HOURSLOTS);
 
 	private void populateSchedule(String name, Day d, Time time) {
-		for (int i = time.getStartTime(); i < time.getEndTime(); i++) {
+		for (int i = time.getStartTime()-2; i < time.getEndTime(); i++) {
 //			System.out.println(name + " " + i + " " + time.getEndTime() + " ");
-			schedule.addName(name, i, Day.value(d));
+			schedule.addDNS(name, Day.value(d), i);
+		}
+		
+//		int startTime = time.getStartTime();
+//		if (startTime >= 2 && startTime <= 9) { // Only need to check from 11-3pm
+//			schedule.addDNS(name, Day.value(d), startTime-1);
+//			schedule.addDNS(name, Day.value(d), startTime-2);
+//		}
+		
+		
+		int endTime = time.getEndTime();
+		if (endTime >= 0 && endTime <= 8) { // Only need to check from 10-2pm
+			schedule.addName(name, Day.value(d), endTime);
+			schedule.addName(name, Day.value(d), endTime+1);
 		}
 	}
 		
@@ -73,7 +86,8 @@ public class Tabler {
 	}
 	
 	void print() {
-		schedule.printRow(0);
+//		schedule.printRow(0);
+		schedule.print();
 	}
 
 	public static void main(String args[]) {

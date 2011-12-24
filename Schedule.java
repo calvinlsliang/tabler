@@ -1,6 +1,7 @@
 package tabler;
 
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.TreeSet;
 
@@ -8,32 +9,55 @@ public class Schedule {
 
 	int weekdays_size;
 	int hourslots_size;
+	HashSet<String>[][] donotSchedule = null;
 	TreeSet<String>[][] schedule = null;
 	
 	Schedule() {
 		weekdays_size = 0;
 		hourslots_size = 0;
 		schedule = (TreeSet<String>[][]) new TreeSet[0][0];
+		donotSchedule = (HashSet<String>[][]) new HashSet[0][0];
+
 	}
 	
 	Schedule(int weekdays, int hourslots) {
 		weekdays_size = weekdays;
 		hourslots_size = hourslots;
 		schedule = (TreeSet<String>[][]) new TreeSet[weekdays][hourslots];
+		donotSchedule = (HashSet<String>[][]) new HashSet[weekdays][hourslots];
 		for (int i = 0; i < weekdays_size; i++) {
 			for (int j = 0; j < hourslots_size; j++) {
 				schedule[i][j] = new TreeSet<String>(String.CASE_INSENSITIVE_ORDER);
+				donotSchedule[i][j] = new HashSet<String>();
 			}
 		}
+	}
+	
+	// donotschedule, used to check if I'm scheduling in the 1-hour gap between two classes
+	void addDNS(String name, int weekday, int hourslot) {
+		if (!isValidWeekday(weekday) || !isValidHourslot(hourslot)) {
+			// Allow bad input but don't do anything, so the table can be populated easier
+			return;
+		}
+		
+		// Already scheduled a one-hour slot. Got to remove, whoops!
+		if (schedule[weekday][hourslot].contains(name)) {
+			schedule[weekday][hourslot].remove(name);
+		}
+		donotSchedule[weekday][hourslot].add(name);
 	}
 	
 	void addName(String name, int weekday, int hourslot) {
 		if (!isValidWeekday(weekday) || !isValidHourslot(hourslot)) {
 			// Allow bad input but don't do anything, so the table can be populated easier
-			//System.err.println("Wrong weekday or hourslot being passed in:" + weekday + " " + hourslot);
 			return;
 		}
-		schedule[weekday][hourslot].add(name);
+		
+		// check if there's a class during this time
+		// It's the one-hour gap between two classes. Abort!
+		if (!donotSchedule[weekday][hourslot].contains(name)) {
+			schedule[weekday][hourslot].add(name);
+		}
 	}
 	
 	boolean isValidWeekday(int weekday) {
@@ -67,6 +91,7 @@ public class Schedule {
 		while (iter0.hasNext() || iter1.hasNext() || 
 				iter2.hasNext() || iter3.hasNext() || 
 				iter4.hasNext()) {
+			System.out.print("\t");
 			if (iter0.hasNext()) {
 				name = iter0.next();
 				System.out.print(name);
@@ -108,26 +133,37 @@ public class Schedule {
 	}
 	
 	void print() {
-		System.out.println("\tMONDAY\t\tTUESDAY\t\tWEDNESDAY\t\tTHURSDAY\t\tFRIDAY");
-		System.out.println("10:00\n");
+		System.out.print("\tMONDAY");
+		printXspaces("MONDAY".length());
+		System.out.print("TUESDAY");
+		printXspaces("TUESDAY".length());
+		System.out.print("WEDNESDAY");
+		printXspaces("WEDNESDAY".length());
+		System.out.print("THURSDAY");
+		printXspaces("THURSDAY".length());
+		System.out.print("FRIDAY");
+		printXspaces("FRIDAY".length());
+		System.out.println();
+		
+		System.out.print("10:00");
 		printRow(0);
-		System.out.println("10:30\n");
+		System.out.print("10:30");
 		printRow(1);
-		System.out.println("11:00\n");
+		System.out.print("11:00");
 		printRow(2);
-		System.out.println("11:30\n");
+		System.out.print("11:30");
 		printRow(3);
-		System.out.println("12:00\n");
+		System.out.print("12:00");
 		printRow(4);
-		System.out.println("12:30\n");
+		System.out.print("12:30");
 		printRow(5);
-		System.out.println(" 1:00\n");
+		System.out.print(" 1:00");
 		printRow(6);
-		System.out.println(" 1:30\n");
+		System.out.print(" 1:30");
 		printRow(7);
-		System.out.println(" 2:00\n");
+		System.out.print(" 2:00");
 		printRow(8);
-		System.out.println(" 2:30\n");
+		System.out.print(" 2:30");
 		printRow(9);
 	}
 	

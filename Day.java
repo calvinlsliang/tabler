@@ -20,7 +20,7 @@ public enum Day {
 		case 'M':
 			return Day.MONDAY;
 		case 'T':
-			if (weekday == 1) { // Tuesday
+			if (pos == 1) { // Tuesday
 				return Day.TUESDAY;
 			} else { // Thursday
 				return Day.THURSDAY;
