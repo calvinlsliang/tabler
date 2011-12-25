@@ -1,5 +1,8 @@
 package tabler;
 
+/*
+ * @author Calvin Liang <calvinlsliang@gmail.com>
+ */
 public class Time {
 	
 	int startTime;

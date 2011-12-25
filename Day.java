@@ -1,5 +1,8 @@
 package tabler;
 
+/*
+ * @author Calvin Liang <calvinlsliang@gmail.com>
+ */
 public enum Day {
 	
 	MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY;

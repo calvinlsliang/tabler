@@ -5,13 +5,23 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.TreeSet;
 
+/*
+ * @author Calvin Liang <calvinlsliang@gmail.com>
+ */
 public class Schedule {
-
+	
+	/* 
+	 * I wanted two sets for each cell in the grid.
+	 * One set would remember the people who absolutely cannot table during that time, whether
+	 * it is from classes or clubs. The other set would remember people who are being
+	 * considered for that time, mainly the hour after they finish class.
+	 */
 	int weekdays_size;
 	int hourslots_size;
 	HashSet<String>[][] donotSchedule = null;
 	TreeSet<String>[][] schedule = null;
 	
+	@SuppressWarnings("unchecked")
 	Schedule() {
 		weekdays_size = 0;
 		hourslots_size = 0;
@@ -20,6 +30,7 @@ public class Schedule {
 
 	}
 	
+	@SuppressWarnings("unchecked")
 	Schedule(int weekdays, int hourslots) {
 		weekdays_size = weekdays;
 		hourslots_size = hourslots;
@@ -33,28 +44,40 @@ public class Schedule {
 		}
 	}
 	
-	// donotschedule, used to check if I'm scheduling in the 1-hour gap between two classes
+	/*
+	 * Do not schedule during these times. The students have either classes or other
+	 * obligations that prevent them from tabling.
+	 */
 	void addDNS(String name, int weekday, int hourslot) {
 		if (!isValidWeekday(weekday) || !isValidHourslot(hourslot)) {
 			// Allow bad input but don't do anything, so the table can be populated easier
 			return;
 		}
 		
-		// Already scheduled a one-hour slot. Got to remove, whoops!
+		/*
+		 * An easy way to fix the mistake of assign tabling when they have class.
+		 * Since the parser reads the schedules sequentially, it does not know if the 
+		 * student will have class during a specific slot, so it removes it if the student
+		 * eventually does.
+		 */
+		
 		if (schedule[weekday][hourslot].contains(name)) {
 			schedule[weekday][hourslot].remove(name);
 		}
 		donotSchedule[weekday][hourslot].add(name);
 	}
 	
+	/* 
+	 * Adds tabling spots indiscriminately. Assigns tabling one hour after the student's
+	 * class finishes. addDNS() will correct the potentially tabling spot if the student
+	 * has class.
+	 */
 	void addName(String name, int weekday, int hourslot) {
 		if (!isValidWeekday(weekday) || !isValidHourslot(hourslot)) {
 			// Allow bad input but don't do anything, so the table can be populated easier
 			return;
 		}
-		
-		// check if there's a class during this time
-		// It's the one-hour gap between two classes. Abort!
+
 		if (!donotSchedule[weekday][hourslot].contains(name)) {
 			schedule[weekday][hourslot].add(name);
 		}
@@ -68,14 +91,32 @@ public class Schedule {
 		return hourslot >=0 && hourslot < hourslots_size;
 	}
 	
-	void printXspaces(int num) {
-		if (num < 0 || num > 25) {
-			return;
-		}
+	/*
+	 * Prints out the names followed by (25-name.length()) spaces, since tabs do not
+	 * work well with varying sized names.
+	 */
+	void printXspaces(String name) {
+		int num = name.length();
+		System.out.print(name);
 		for (int i = 0; i < 25-num; i++) {
 			System.out.print(" ");
 		}
 	}
+	
+	void printXspaces() {
+		for (int i = 0; i < 25; i++) {
+			System.out.print(" ");
+		}
+	}
+	
+	/*
+	 * Crappy design using five iterators and iterating one at a time while printing the
+	 * names out. At least the size of the HashSet does not need to be remembered.
+	 * An alternate implementation is using JTable, which would also use a GUI that
+	 * could be modified in real time.
+	 * 
+	 * http://stackoverflow.com/questions/8621873/how-to-print-a-2d-array-with-varying-sized-cells
+	 */
 	void printRow(int rownumber) {
 		if (!isValidHourslot(rownumber)) {
 			System.err.println("Wrong rownumber: " + rownumber);
@@ -87,45 +128,34 @@ public class Schedule {
 		Iterator<String> iter3 = schedule[3][rownumber].iterator();
 		Iterator<String> iter4 = schedule[4][rownumber].iterator();
 
-		String name;
 		while (iter0.hasNext() || iter1.hasNext() || 
 				iter2.hasNext() || iter3.hasNext() || 
 				iter4.hasNext()) {
 			System.out.print("\t");
 			if (iter0.hasNext()) {
-				name = iter0.next();
-				System.out.print(name);
-				printXspaces(name.length());
+				printXspaces(iter0.next());
 			} else {
-				printXspaces(0);
+				printXspaces();
 			}
 			if (iter1.hasNext()) {
-				name = iter1.next();
-				System.out.print(name);
-				printXspaces(name.length());
+				printXspaces(iter1.next());
 			} else {
-				printXspaces(0);
+				printXspaces();
 			}
 			if (iter2.hasNext()) {
-				name = iter2.next();
-				System.out.print(name);
-				printXspaces(name.length());
+				printXspaces(iter2.next());
 			} else {
-				printXspaces(0);
+				printXspaces();
 			}
 			if (iter3.hasNext()) {
-				name = iter3.next();
-				System.out.print(name);
-				printXspaces(name.length());
+				printXspaces(iter3.next());
 			} else {
-				printXspaces(0);
+				printXspaces();
 			}
 			if (iter4.hasNext()) {
-				name = iter4.next();
-				System.out.print(name);
-				printXspaces(name.length());
+				printXspaces(iter4.next());
 			} else {
-				printXspaces(0);
+				printXspaces();
 			}
 			System.out.println();
 		}
@@ -133,16 +163,12 @@ public class Schedule {
 	}
 	
 	void print() {
-		System.out.print("\tMONDAY");
-		printXspaces("MONDAY".length());
-		System.out.print("TUESDAY");
-		printXspaces("TUESDAY".length());
-		System.out.print("WEDNESDAY");
-		printXspaces("WEDNESDAY".length());
-		System.out.print("THURSDAY");
-		printXspaces("THURSDAY".length());
-		System.out.print("FRIDAY");
-		printXspaces("FRIDAY".length());
+		System.out.print("\t");
+		printXspaces("MONDAY");
+		printXspaces("TUESDAY");
+		printXspaces("WEDNESDAY");
+		printXspaces("THURSDAY");
+		printXspaces("FRIDAY");
 		System.out.println();
 		
 		System.out.print("10:00");
