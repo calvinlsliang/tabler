@@ -59,7 +59,6 @@ public class Tabler {
 		 */
 		System.out.println(problemCells);
 		while (problemCells.size() > 0) {
-			System.out.println(problemCells.size());
 			finalSchedule.print();
 //			try {
 //				Thread.sleep(10000);
@@ -80,9 +79,11 @@ public class Tabler {
 							chosenStudents.add(name);
 							Cell[] cells = new Cell[2];
 							cells[0] = cell;
-							cells[1] = schedule.getAccompanyingCell(name, cell);
+							Cell secondCell = schedule.getAccompanyingCell(name, cell);
+							cells[1] = secondCell;
 							chosenStudentsHash.put(name, cells);
 							finalSchedule.addName(name, cell);
+							finalSchedule.addName(name, secondCell);
 							foundOne = true;
 							break;
 						}
@@ -143,6 +144,12 @@ public class Tabler {
 		}
 		
 		finalSchedule.print();
+		
+		/*
+		 * TODO:
+		 * Brandea only exists once but her name doesn't show up at 11:00 for some reason.
+		 * No idea why.
+		 */
 		
 		
 		/*
