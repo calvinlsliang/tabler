@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.TreeSet;
+import java.util.Vector;
 
 /*
  * @author Calvin Liang <calvinlsliang@gmail.com>
@@ -19,7 +20,7 @@ public class Schedule {
 	int weekdays_size;
 	int hourslots_size;
 	HashSet<String>[][] donotSchedule = null;
-	TreeSet<String>[][] schedule = null;
+	TreeSet<String>[][] schedule = null; // To keep them alphabetical order
 	
 	@SuppressWarnings("unchecked")
 	Schedule() {
@@ -42,6 +43,43 @@ public class Schedule {
 				donotSchedule[i][j] = new HashSet<String>();
 			}
 		}
+	}
+	
+	HashSet<Cell> getProblemCells(int num) {
+		HashSet<Cell> cells = new HashSet<Cell>();
+		for (int i = 0; i < weekdays_size; i++) {
+			for (int j = 0; j < hourslots_size; j++) {
+				if (schedule[i][j].size() <= num) {
+					cells.add(new Cell(i, j));
+				}
+			}
+		}
+		return cells;
+	}
+	
+	TreeSet<String> getCell(Cell c) {
+		return schedule[c.getWeekday()][c.getHourslot()];
+	}
+	
+	TreeSet<String> getCell(int weekday, int hourslot) {
+		if (!isValidWeekday(weekday) || !isValidHourslot(hourslot)) {
+			return null;
+		}
+		return schedule[weekday][hourslot];
+	}
+	
+	public Cell getAccompanyingCell(String name, Cell cell) {
+		TreeSet<String> ts = getCell(cell.getWeekday(), cell.getHourslot()-1);
+		if (ts != null && ts.contains(name)) {
+			return new Cell(cell.getWeekday(), cell.getHourslot()-1);
+		}
+		
+		ts = getCell(cell.getWeekday(), cell.getHourslot()+1);
+		if (ts != null && ts.contains(name)) {
+			return new Cell(cell.getWeekday(), cell.getHourslot()+1);
+		}
+		
+		return null;
 	}
 	
 	/*
@@ -83,12 +121,38 @@ public class Schedule {
 		}
 	}
 	
+	void addName(String name, Cell cell) {
+		addName(name, cell.getWeekday(), cell.getHourslot());
+	}
+	
+	void removeName(String name, int weekday, int hourslot) {
+		if (!isValidWeekday(weekday) || !isValidHourslot(hourslot)) {
+			return;
+		}
+		schedule[weekday][hourslot].remove(name);
+	}
+	
+	void removeName(String name, Cell cell) {
+		removeName(name, cell.getWeekday(), cell.getHourslot());
+	}
+	
 	boolean isValidWeekday(int weekday) {
 		return weekday >= 0 && weekday < weekdays_size;
 	}
 	
 	boolean isValidHourslot(int hourslot) {
 		return hourslot >=0 && hourslot < hourslots_size;
+	}
+	
+	boolean checkSchedule() {
+		for (int i = 0; i < weekdays_size; i++) {
+			for (int j = 0; j < hourslots_size; j++) {
+				if (schedule[i][j].size() < 2) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 	
 	/*
