@@ -1,5 +1,8 @@
 package tabler;
 
+/*
+ * @author Calvin Liang <calvinlsliang@gmail.com>
+ */
 public class Cell {
 
 	int weekday;
@@ -21,5 +24,9 @@ public class Cell {
 	
 	int getHourslot() {
 		return hourslot;
+	}
+	
+	String print() {
+		return "\t" + weekday + " " + hourslot;
 	}
 }

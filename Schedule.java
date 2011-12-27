@@ -57,6 +57,16 @@ public class Schedule {
 		return cells;
 	}
 	
+	HashSet<Cell> getAllCells() {
+		HashSet<Cell> cells = new HashSet<Cell>();
+		for (int i = 0; i < weekdays_size; i++) {
+			for (int j = 0; j < hourslots_size; j++) {
+				cells.add(new Cell(i, j));
+			}
+		}
+		return cells;
+	}
+	
 	TreeSet<String> getCell(Cell c) {
 		return schedule[c.getWeekday()][c.getHourslot()];
 	}
@@ -68,6 +78,12 @@ public class Schedule {
 		return schedule[weekday][hourslot];
 	}
 	
+	/*
+	 * Checks above and below that current hourslot and returns the appropriate
+	 * cell that contains the person's name. An invariant with the potential tablers
+	 * is that they always exist in two (1-hour total) slots, never as a single (30-minute)
+	 * slot.
+	 */
 	public Cell getAccompanyingCell(String name, Cell cell) {
 		TreeSet<String> ts = getCell(cell.getWeekday(), cell.getHourslot()-1);
 		if (ts != null && ts.contains(name)) {
@@ -83,7 +99,7 @@ public class Schedule {
 	}
 	
 	/*
-	 * Do not schedule during these times. The students have either classes or other
+	 * Do not schedule (DNS) during these times. The students have either classes or other
 	 * obligations that prevent them from tabling.
 	 */
 	void addDNS(String name, int weekday, int hourslot) {
@@ -98,9 +114,13 @@ public class Schedule {
 		 * student will have class during a specific slot, so it removes it if the student
 		 * eventually does.
 		 */
-		
 		if (schedule[weekday][hourslot].contains(name)) {
 			schedule[weekday][hourslot].remove(name);
+			
+			// Need to check if there's lone 30-minute slots that people schedule breaks for.
+			if (isValidHourslot(hourslot-1) && schedule[weekday][hourslot-1].contains(name)) {
+				schedule[weekday][hourslot-1].remove(name);
+			}
 		}
 		donotSchedule[weekday][hourslot].add(name);
 	}
@@ -109,9 +129,27 @@ public class Schedule {
 	 * Adds tabling spots indiscriminately. Assigns tabling one hour after the student's
 	 * class finishes. addDNS() will correct the potentially tabling spot if the student
 	 * has class.
+	 * 
+	 * Used for adding to potential tabling spots.
 	 */
 	void addName(String name, int weekday, int hourslot) {
-		if (!isValidWeekday(weekday) || !isValidHourslot(hourslot)) {
+		if (!isValidWeekday(weekday) || !isValidHourslot(hourslot) || !isValidHourslot(hourslot+1) || name == null) {
+			// Allow bad input but don't do anything, so the table can be populated easier
+			return;
+		}
+
+		if (!donotSchedule[weekday][hourslot].contains(name) &&
+				!donotSchedule[weekday][hourslot+1].contains(name)) {
+			schedule[weekday][hourslot].add(name);
+			schedule[weekday][hourslot+1].add(name);
+		}
+	}
+	
+	// Used for adding directly to the final schedule, which is why there's a difference.
+	void addName(String name, Cell cell) {
+		int weekday = cell.getWeekday();
+		int hourslot = cell.getHourslot();
+		if (!isValidWeekday(weekday) || !isValidHourslot(hourslot) || name == null) {
 			// Allow bad input but don't do anything, so the table can be populated easier
 			return;
 		}
@@ -119,10 +157,6 @@ public class Schedule {
 		if (!donotSchedule[weekday][hourslot].contains(name)) {
 			schedule[weekday][hourslot].add(name);
 		}
-	}
-	
-	void addName(String name, Cell cell) {
-		addName(name, cell.getWeekday(), cell.getHourslot());
 	}
 	
 	void removeName(String name, int weekday, int hourslot) {
@@ -175,7 +209,7 @@ public class Schedule {
 	
 	/*
 	 * Crappy design using five iterators and iterating one at a time while printing the
-	 * names out. At least the size of the HashSet does not need to be remembered.
+	 * names out. At least the size of each HashSet does not need to be remembered.
 	 * An alternate implementation is using JTable, which would also use a GUI that
 	 * could be modified in real time.
 	 * 
