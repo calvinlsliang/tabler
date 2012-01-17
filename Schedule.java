@@ -1,10 +1,8 @@
 package tabler;
 
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.TreeSet;
-import java.util.Vector;
 
 /*
  * @author Calvin Liang <calvinlsliang@gmail.com>
@@ -19,8 +17,9 @@ public class Schedule {
 	 */
 	int weekdays_size;
 	int hourslots_size;
-	HashSet<String>[][] donotSchedule = null;
 	TreeSet<String>[][] schedule = null; // To keep them alphabetical order
+	HashSet<String>[][] donotSchedule = null;
+	HashSet<String>[][] whitelistSchedule = null;
 	
 	@SuppressWarnings("unchecked")
 	Schedule() {
@@ -28,6 +27,7 @@ public class Schedule {
 		hourslots_size = 0;
 		schedule = (TreeSet<String>[][]) new TreeSet[0][0];
 		donotSchedule = (HashSet<String>[][]) new HashSet[0][0];
+		whitelistSchedule = (HashSet<String>[][]) new HashSet[0][0];
 
 	}
 	
@@ -37,10 +37,12 @@ public class Schedule {
 		hourslots_size = hourslots;
 		schedule = (TreeSet<String>[][]) new TreeSet[weekdays][hourslots];
 		donotSchedule = (HashSet<String>[][]) new HashSet[weekdays][hourslots];
+		whitelistSchedule = (HashSet<String>[][]) new HashSet[weekdays][hourslots];
 		for (int i = 0; i < weekdays_size; i++) {
 			for (int j = 0; j < hourslots_size; j++) {
 				schedule[i][j] = new TreeSet<String>(String.CASE_INSENSITIVE_ORDER);
 				donotSchedule[i][j] = new HashSet<String>();
+				whitelistSchedule[i][j] = new HashSet<String>();
 			}
 		}
 	}
@@ -145,8 +147,8 @@ public class Schedule {
 		}
 	}
 	
-	// Used for adding directly to the final schedule, which is why there's a difference.
-	void addName(String name, Cell cell) {
+	// Used for adding directly to the final schedule
+	void addFinalName(String name, Cell cell) {
 		int weekday = cell.getWeekday();
 		int hourslot = cell.getHourslot();
 		if (!isValidWeekday(weekday) || !isValidHourslot(hourslot) || name == null) {
@@ -217,7 +219,7 @@ public class Schedule {
 	 */
 	void printRow(int rownumber) {
 		if (!isValidHourslot(rownumber)) {
-			System.err.println("Wrong rownumber: " + rownumber);
+			System.err.println("Wrong row number: " + rownumber);
 		}
 		
 		Iterator<String> iter0 = schedule[0][rownumber].iterator();

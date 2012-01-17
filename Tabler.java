@@ -23,7 +23,15 @@ public class Tabler {
 	int NUM_WEEKDAYS = 5; // Monday, Tuesday, ..., Friday = 5 weekdays
 	int NUM_HOURSLOTS = 10; //10am, 10:30am, ..., 3 = 10 slots
 	Schedule schedule = new Schedule(NUM_WEEKDAYS, NUM_HOURSLOTS);
+	Schedule finalSchedule = new Schedule(NUM_WEEKDAYS, NUM_HOURSLOTS);
 	HashSet<String> studentNames = new HashSet<String>();
+	
+	// Chosen students are put into a hash so they do not get chosen again
+	HashSet<String> chosenStudents = new HashSet<String>();
+	
+	// Hashtable with K: students, V: the two cells they are placed in
+	Hashtable<String, Cell[]> chosenStudentsHash = new Hashtable<String, Cell[]>();
+	
 
 	enum Type {
 		NORMAL, BLACKLIST, WHITELIST
@@ -100,19 +108,30 @@ public class Tabler {
 		int startTime = time.getStartTime();
 		int endTime = time.getEndTime();
 
-		for (int i = startTime; i < endTime; i++) {
-//			schedule.addName(name, Day.value(d), i); // Populates with regular schedule
-			schedule.addDNS(name, Day.value(d), i);
-		}	
-		
-		/*
-		 * Skips if only adding blacklisted people to the doNotSchedule schedule.
-		 */
-		if (type == Type.NORMAL) { 
+		if (type == Type.NORMAL) {
+			for (int i = startTime; i < endTime; i++) {
+//				schedule.addFinalName(name, Day.value(d), i); //Populates with regular schedule
+				schedule.addDNS(name, Day.value(d), i);
+			}	
+			
+			/*
+			 * Skips if only adding blacklisted people to the doNotSchedule schedule.
+			 */
 			if (endTime >= 0 && endTime <= 8) { // Only need to check from 10-2pm
 				studentNames.add(name); // Adds valid students to the studentNames set
 				schedule.addName(name, Day.value(d), endTime);
 			}
+		} else if (type == Type.BLACKLIST){
+			for (int i = startTime; i < endTime; i++) {
+				schedule.addDNS(name, Day.value(d), i);
+			}	
+		} else if (type == Type.WHITELIST) {
+			chosenStudents.add(name);
+			for (int i = time.getStartTime(); i < time.getEndTime(); i++) {
+				finalSchedule.addFinalName(name, new Cell(Day.value(d), i));
+			}
+			// Don't add to the chosenStudentsHash so they can't get removed
+			
 		}
 	}
 	
@@ -124,19 +143,11 @@ public class Tabler {
 	 * all the problem cells are satisfied. Afterwards, it iteratively checks each tabling slot
 	 * and picks any available student at that time and adds to the slot.
 	 */
-	private Schedule pickStudents() {
+	private void pickStudents() {
 		if (!schedule.checkSchedule()) {
 			System.err.println("There exists inadequate tabling spots!");
-			return null;
-		}
-		// Schedule where tabling spots are finalized
-		Schedule finalSchedule = new Schedule(NUM_WEEKDAYS, NUM_HOURSLOTS);
-		
-		// Chosen students are put into a hash so they do not get chosen again
-		HashSet<String> chosenStudents = new HashSet<String>();
-		
-		// Hashtable with K: students, V: the two cells they are placed in
-		Hashtable<String, Cell[]> chosenStudentsHash = new Hashtable<String, Cell[]>();
+			return;
+		}		
 		
 		// Initial problem cells that must be looked at first
 		HashSet<Cell> problemCells = schedule.getProblemCells(6);
@@ -166,8 +177,8 @@ public class Tabler {
 							Cell secondCell = schedule.getAccompanyingCell(name, cell);
 							cells[1] = secondCell;
 							chosenStudentsHash.put(name, cells);
-							finalSchedule.addName(name, cell);
-							finalSchedule.addName(name, secondCell);
+							finalSchedule.addFinalName(name, cell);
+							finalSchedule.addFinalName(name, secondCell);
 							foundOne = true;
 							break;
 						}
@@ -189,19 +200,22 @@ public class Tabler {
 							i++;
 						}
 						Cell[] oldCells = chosenStudentsHash.get(name);
-						finalSchedule.removeName(name, oldCells[0]);
-						finalSchedule.removeName(name, oldCells[1]);
-						
-						finalSchedule.addName(name, cell);
-						Cell secondCell = schedule.getAccompanyingCell(name, cell);
-						finalSchedule.addName(name, secondCell);
-
-						Cell[] cells = new Cell[2];
-						cells[0] = cell;
-						cells[1] = secondCell;
-						chosenStudentsHash.put(name, cells);
-						toAdd.add(oldCells[0]);
-						toAdd.add(oldCells[1]);
+						if (oldCells != null) {
+							finalSchedule.removeName(name, oldCells[0]);
+							finalSchedule.removeName(name, oldCells[1]);
+							chosenStudentsHash.remove(name);
+							
+							finalSchedule.addFinalName(name, cell);
+							Cell secondCell = schedule.getAccompanyingCell(name, cell);
+							finalSchedule.addFinalName(name, secondCell);
+	
+							Cell[] cells = new Cell[2];
+							cells[0] = cell;
+							cells[1] = secondCell;
+							chosenStudentsHash.put(name, cells);
+							toAdd.add(oldCells[0]);
+							toAdd.add(oldCells[1]);
+						}
 					}
 				} else {
 					// Change the size of the number of problem cells
@@ -231,6 +245,13 @@ public class Tabler {
 		int numStudents = getNumberOfStudents();
 		problemCells = schedule.getAllCells();
 		while (chosenStudents.size() != numStudents) {
+//			finalSchedule.print();
+//			System.out.println(chosenStudents.size() + " " + numStudents);
+//			try {
+//			Thread.sleep(5000);
+//			} catch (Exception e) {
+//				
+//			}
 			Iterator<Cell> iter = problemCells.iterator();
 			while (iter.hasNext()) {
 				Cell cell = iter.next();
@@ -247,8 +268,8 @@ public class Tabler {
 							Cell secondCell = schedule.getAccompanyingCell(name, cell);
 							cells[1] = secondCell;
 							chosenStudentsHash.put(name, cells);
-							finalSchedule.addName(name, cell);
-							finalSchedule.addName(name, secondCell);
+							finalSchedule.addFinalName(name, cell);
+							finalSchedule.addFinalName(name, secondCell);
 							foundOne = true;
 							break;
 						}
@@ -270,19 +291,21 @@ public class Tabler {
 							i++;
 						}
 						Cell[] oldCells = chosenStudentsHash.get(name);
-						finalSchedule.removeName(name, oldCells[0]);
-						finalSchedule.removeName(name, oldCells[1]);
-						
-						finalSchedule.addName(name, cell);
-						Cell secondCell = schedule.getAccompanyingCell(name, cell);
-						finalSchedule.addName(name, secondCell);
-
-						Cell[] cells = new Cell[2];
-						cells[0] = cell;
-						cells[1] = secondCell;
-						chosenStudentsHash.put(name, cells);
-						toAdd.add(oldCells[0]);
-						toAdd.add(oldCells[1]);
+						if (oldCells != null) {
+							finalSchedule.removeName(name, oldCells[0]);
+							finalSchedule.removeName(name, oldCells[1]);
+							
+							finalSchedule.addFinalName(name, cell);
+							Cell secondCell = schedule.getAccompanyingCell(name, cell);
+							finalSchedule.addFinalName(name, secondCell);
+	
+							Cell[] cells = new Cell[2];
+							cells[0] = cell;
+							cells[1] = secondCell;
+							chosenStudentsHash.put(name, cells);
+							toAdd.add(oldCells[0]);
+							toAdd.add(oldCells[1]);
+						}
 					}
 				} else {
 					/*
@@ -298,8 +321,8 @@ public class Tabler {
 							Cell secondCell = schedule.getAccompanyingCell(name, cell);
 							cells[1] = secondCell;
 							chosenStudentsHash.put(name, cells);
-							finalSchedule.addName(name, cell);
-							finalSchedule.addName(name, secondCell);
+							finalSchedule.addFinalName(name, cell);
+							finalSchedule.addFinalName(name, secondCell);
 							break;
 						}
 					}
@@ -318,7 +341,7 @@ public class Tabler {
 			}
 			toAdd.clear();
 		}
-		return finalSchedule;
+		return;
 	}
 	
 	/*
@@ -340,14 +363,15 @@ public class Tabler {
 	}
 	
 	void print() {
-		schedule.print();
+		finalSchedule.print();
 	}
 
 	public static void main(String args[]) {
 		Tabler t = new Tabler();
-		t.parseFile("src/tabler/data_full.txt", Type.NORMAL);
-		t.parseFile("src/tabler/data_blacklist.txt", Type.BLACKLIST);
-		Schedule finalSchedule = t.pickStudents();
-		finalSchedule.print();
+		t.parseFile("../data_full.txt", Type.NORMAL);
+		t.parseFile("../blacklist.txt", Type.BLACKLIST);
+		t.parseFile("../whitelist.txt", Type.WHITELIST);
+		t.pickStudents();
+		t.print();
 	}
 }
